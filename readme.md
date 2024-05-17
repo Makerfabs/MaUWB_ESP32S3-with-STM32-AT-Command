@@ -144,7 +144,7 @@ AT+SETCFG=5,0,0,1
 ## Compiler Options
 
 - Use type-c use cable connect USB-TTL to PC.
-- Select "ESP32 DEV Module"
+- Select "ESP32S3 DEV Module"
 
 Libraries:
 - Use 2.0.0   Wire
