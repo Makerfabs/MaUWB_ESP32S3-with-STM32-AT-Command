@@ -3,11 +3,12 @@
 
 ```
 
-Version:    V1.0
+Version:    V1.1
 Author:     Vincent
 Create Date:    2024/3/12
 Note:
 
+        2024/9/24  V1.1: MaUWB(v1.1.1).HEX is released to support simultaneous data transmission for ranging. 
 
 ```
 ![](md_pic/main.jpg)
