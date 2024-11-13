@@ -16,8 +16,6 @@ Use 2.5.7   Adafruit_SSD1306
 
 #define TAG
 
-#define FREQ_850K
-
 #define UWB_TAG_COUNT 64
 
 // User config end       ------------------------------------------
@@ -128,7 +126,7 @@ void logoshow(void)
 
     temp = temp + "T" + UWB_INDEX;
 
-    temp = temp + "   850k";
+    temp = temp + "   6.8M";
 
     display.println(temp);
 
@@ -185,7 +183,7 @@ String config_cmd()
 
     // Set frequence 850k or 6.8M
 
-    temp = temp + ",0";
+    temp = temp + ",1";
 
     // Set range filter
     temp = temp + ",1";
@@ -202,7 +200,9 @@ String cap_cmd()
 
     //  Time of a single time slot
 
-    temp = temp + ",15";
+    temp = temp + ",10";
 
+    temp = temp + ",0";
+    
     return temp;
 }

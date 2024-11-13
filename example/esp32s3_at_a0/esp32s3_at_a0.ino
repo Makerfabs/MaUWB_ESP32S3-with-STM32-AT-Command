@@ -12,11 +12,9 @@ Use 2.5.7   Adafruit_SSD1306
 
 // User config          ------------------------------------------
 
-#define UWB_INDEX 0
+#define UWB_INDEX 1
 
 #define ANCHOR
-
-#define FREQ_6800K
 
 #define UWB_TAG_COUNT 64
 
@@ -205,6 +203,8 @@ String cap_cmd()
     //  Time of a single time slot
 
     temp = temp + ",10";
+
+    temp = temp + ",0";
 
     return temp;
 }
