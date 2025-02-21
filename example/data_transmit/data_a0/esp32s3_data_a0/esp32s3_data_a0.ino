@@ -86,14 +86,14 @@ String response = "";
 
 void loop()
 {
-    // if ((millis() - runtime) > 1000)
-    // {
-    //     char data_str[80];
-    //     sprintf(data_str, "AT+DATA=32,UWB_A0_Data:%d", data_count * 2 + 1);
-    //     data_count++;
-    //     sendData(data_str, 2000, 1);
-    //     runtime = millis();
-    // }
+    if ((millis() - runtime) > 1000)
+    {
+        char data_str[80];
+        sprintf(data_str, "AT+DATA=32,UWB_A0_Data:%d", data_count * 2 + 1);
+        data_count++;
+        sendData(data_str, 2000, 1);
+        runtime = millis();
+    }
 
     // put your main code here, to run repeatedly:
     while (SERIAL_LOG.available() > 0)
