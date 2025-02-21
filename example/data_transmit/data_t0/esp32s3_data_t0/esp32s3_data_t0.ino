@@ -1,5 +1,5 @@
 /*
-For ESP32S3 UWB AT Demo
+For ESP32S3 UWB AT  Data Demo
 
 
 Use 2.0.0   Wire
@@ -78,12 +78,21 @@ void setup()
 }
 
 long int runtime = 0;
+int data_count = 0;
 
 String response = "";
 String rec_head = "AT+RANGE";
 
 void loop()
 {
+    if ((millis() - runtime) > 500)
+    {
+        char data_str[80];
+        sprintf(data_str, "AT+DATA=32,UWB_T0_Data:%d", data_count * 2);
+        data_count++;
+        sendData(data_str, 2000, 1);
+        runtime = millis();
+    }
 
     // put your main code here, to run repeatedly:
     while (SERIAL_LOG.available() > 0)

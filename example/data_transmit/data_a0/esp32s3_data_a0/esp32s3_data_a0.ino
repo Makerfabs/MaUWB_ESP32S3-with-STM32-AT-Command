@@ -1,5 +1,5 @@
 /*
-For ESP32S3 UWB AT Demo
+For ESP32S3 UWB AT Data Demo
 
 
 Use 2.0.0   Wire
@@ -10,11 +10,13 @@ Use 2.5.7   Adafruit_SSD1306
 
 */
 
+//去掉DTR脚串口， 否则一直拉低复位脚
+
 // User config          ------------------------------------------
 
 #define UWB_INDEX 0
 
-#define TAG
+#define ANCHOR
 
 #define UWB_TAG_COUNT 64
 
@@ -30,6 +32,7 @@ Use 2.5.7   Adafruit_SSD1306
 
 HardwareSerial SERIAL_AT(2);
 
+// ESP32S3
 #define RESET 16
 
 #define IO_RXD2 18
@@ -69,21 +72,28 @@ void setup()
 
     sendData(config_cmd(), 2000, 1);
     sendData(cap_cmd(), 2000, 1);
-
+//    sendData("AT+GETCAP?/r/n", 2000, 1);
     sendData("AT+SETRPT=1", 2000, 1);
     sendData("AT+SAVE", 2000, 1);
     sendData("AT+RESTART", 2000, 1);
-//    sendData("AT+SLEEP=65535", 2000, 1);
-//    esp_deep_sleep_start();
 }
 
 long int runtime = 0;
+int data_count = 0;
 
 String response = "";
-String rec_head = "AT+RANGE";
+//String rec_head = "AT+RANGE";
 
 void loop()
 {
+    // if ((millis() - runtime) > 1000)
+    // {
+    //     char data_str[80];
+    //     sprintf(data_str, "AT+DATA=32,UWB_A0_Data:%d", data_count * 2 + 1);
+    //     data_count++;
+    //     sendData(data_str, 2000, 1);
+    //     runtime = millis();
+    // }
 
     // put your main code here, to run repeatedly:
     while (SERIAL_LOG.available() > 0)
@@ -126,10 +136,10 @@ void logoshow(void)
 
     String temp = "";
 
-    temp = temp + "T" + UWB_INDEX;
+    temp = temp + "A" + UWB_INDEX;
 
     temp = temp + "   6.8M";
-
+    
     display.println(temp);
 
     display.setCursor(0, 40);
@@ -178,10 +188,11 @@ String config_cmd()
 
     // Set device id
     temp = temp + UWB_INDEX;
-
+    
     // Set device role
     //x2:Device Role(0:Tag / 1:Anchor)
-    temp = temp + ",0";
+    temp = temp + ",1";
+
 
     // Set frequence 850k or 6.8M
 
@@ -206,6 +217,6 @@ String cap_cmd()
     //X3:extMode, whether to increase the passthrough command when transmitting
     //(0: normal packet when communicating, 1: extended packet when communicating)
     temp = temp + ",1";
-    
+
     return temp;
 }

@@ -207,7 +207,7 @@ String cap_cmd()
     
     //X3:extMode, whether to increase the passthrough command when transmitting
     //(0: normal packet when communicating, 1: extended packet when communicating)
-    temp = temp + ",0";
+    temp = temp + ",1";
 
     return temp;
 }
