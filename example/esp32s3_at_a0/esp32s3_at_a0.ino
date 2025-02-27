@@ -10,9 +10,11 @@ Use 2.5.7   Adafruit_SSD1306
 
 */
 
+//去掉DTR脚串口， 否则一直拉低复位脚
+
 // User config          ------------------------------------------
 
-#define UWB_INDEX 1
+#define UWB_INDEX 0
 
 #define ANCHOR
 
@@ -70,7 +72,7 @@ void setup()
 
     sendData(config_cmd(), 2000, 1);
     sendData(cap_cmd(), 2000, 1);
-
+//    sendData("AT+GETCAP?/r/n", 2000, 1);
     sendData("AT+SETRPT=1", 2000, 1);
     sendData("AT+SAVE", 2000, 1);
     sendData("AT+RESTART", 2000, 1);
@@ -79,7 +81,7 @@ void setup()
 long int runtime = 0;
 
 String response = "";
-String rec_head = "AT+RANGE";
+//String rec_head = "AT+RANGE";
 
 void loop()
 {
@@ -177,9 +179,9 @@ String config_cmd()
 
     // Set device id
     temp = temp + UWB_INDEX;
-
+    
     // Set device role
-
+    //x2:Device Role(0:Tag / 1:Anchor)
     temp = temp + ",1";
 
 
@@ -200,11 +202,12 @@ String cap_cmd()
     // Set Tag capacity
     temp = temp + UWB_TAG_COUNT;
 
-    //  Time of a single time slot
-
+    //  Time of a single time slot  6.5M : 10MS  850K ： 15MS
     temp = temp + ",10";
-
-    temp = temp + ",0";
+    
+    //X3:extMode, whether to increase the passthrough command when transmitting
+    //(0: normal packet when communicating, 1: extended packet when communicating)
+    temp = temp + ",1";
 
     return temp;
 }
