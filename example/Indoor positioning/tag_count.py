@@ -16,7 +16,7 @@ def get_frist_com():
     else:
         print("First COM")
         for com in port_list:
-            print(com)               
+            print(com)
             return list(com)[0]
 
 
