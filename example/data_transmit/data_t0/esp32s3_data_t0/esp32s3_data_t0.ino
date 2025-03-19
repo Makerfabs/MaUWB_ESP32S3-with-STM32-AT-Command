@@ -204,7 +204,7 @@ String config_cmd()
 
 String cap_cmd()
 {
-    String temp = "AT+SETCAP=";
+    String temp = "AT+SETCAP=";                     
 
     // Set Tag capacity
     temp = temp + UWB_TAG_COUNT;

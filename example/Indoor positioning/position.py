@@ -26,7 +26,7 @@ class UWB:
         self.status = False
         self.list = []
 
-        if self.type == 1:
+        if self.type == 1:                      
             self.color = RED
         else:
             self.color = BLACK

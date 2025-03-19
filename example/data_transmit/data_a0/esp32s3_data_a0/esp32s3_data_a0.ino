@@ -24,8 +24,8 @@ Use 2.5.7   Adafruit_SSD1306
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include <Arduino.h>
+#include <Adafruit_SSD1306.h>            
+#include <Arduino.h>         
 
 #define SERIAL_LOG Serial
 #define SERIAL_AT mySerial2

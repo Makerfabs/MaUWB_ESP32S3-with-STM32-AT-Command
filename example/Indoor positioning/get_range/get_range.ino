@@ -30,7 +30,7 @@ void setup()
     mySerial2.begin(115200, SERIAL_8N1, IO_RXD2, IO_TXD2);
 
     mySerial2.println("AT");
-    Wire.begin(I2C_SDA, I2C_SCL);
+    Wire.begin(I2C_SDA, I2C_SCL);             
     delay(1000);
     // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
