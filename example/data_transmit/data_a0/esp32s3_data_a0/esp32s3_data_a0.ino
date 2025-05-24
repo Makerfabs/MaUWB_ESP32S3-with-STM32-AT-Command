@@ -86,10 +86,10 @@ String response = "";
 
 void loop()
 {
-    if ((millis() - runtime) > 1000)
+    if ((millis() - runtime) > 1000 * 60)
     {
         char data_str[80];
-        sprintf(data_str, "AT+DATA=32,UWB_A0_Data:%d", data_count * 2 + 1);
+        sprintf(data_str, "AT+DATA=32,UWB_A0_Data:%dtemp:26.3humi:56.1%%", data_count * 2 + 1);
         data_count++;
         sendData(data_str, 2000, 1);
         runtime = millis();
