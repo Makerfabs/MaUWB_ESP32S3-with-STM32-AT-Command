@@ -197,10 +197,16 @@ tag_count = 8
 # A2X, A2Y = 427, 1726
 # A3X, A3Y = 458, 112
 
+# A0X, A0Y = 0, 0
+# A1X, A1Y = 1000, 0
+# A2X, A2Y = 1000, 1000
+# A3X, A3Y = 0, 1000
+
 A0X, A0Y = 0, 0
-A1X, A1Y = 1000, 0
-A2X, A2Y = 1000, 1000
-A3X, A3Y = 0, 1000
+A1X, A1Y = 130, 0
+A2X, A2Y = 130, 130
+A3X, A3Y = 0, 130
+
 
 CENTER_X = int((A0X+A1X+A2X)/3)
 CENTER_Y = int((A0Y+A1Y+A2Y)/3)

@@ -14,6 +14,8 @@ Use 2.5.7   Adafruit_SSD1306
 
 #define UWB_INDEX 0
 
+#define PAN_INDEX 1
+
 #define TAG
 
 #define UWB_TAG_COUNT 64
@@ -71,6 +73,7 @@ void setup()
     sendData(cap_cmd(), 2000, 1);
 
     sendData("AT+SETRPT=1", 2000, 1);
+    sendData(Pan_cmd(), 2000, 1);    
     sendData("AT+SAVE", 2000, 1);
     sendData("AT+RESTART", 2000, 1);
 //    sendData("AT+SLEEP=65535", 2000, 1);
@@ -208,4 +211,13 @@ String cap_cmd()
     temp = temp + ",1";
     
     return temp;
-}                             
+}
+
+String Pan_cmd()
+{
+    String temp = "AT+SETPAN=";
+
+    temp = temp + PAN_INDEX;
+
+    return temp;
+}

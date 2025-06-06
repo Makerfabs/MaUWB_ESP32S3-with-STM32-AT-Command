@@ -85,12 +85,14 @@ String rec_head = "AT+RANGE";
 
 void loop()
 {
-    if ((millis() - runtime) > 500)
+    if ((millis() - runtime) > 100)
     {
-        char data_str[80];
-        sprintf(data_str, "AT+DATA=32,UWB_T0_Data:%d", data_count * 2);
-        data_count++;
-        sendData(data_str, 2000, 1);
+        // char data_str[80];
+        // sprintf(data_str, "AT+DATA=32,UWB_T0_Data:%d", data_count * 2);
+        // data_count++;
+        // sendData(data_str, 2000, 1);
+        String recv_str = sendData("AT+RDATA", 1000, 1);
+        Serial.println(recv_str);
         runtime = millis();
     }
 
@@ -204,7 +206,7 @@ String config_cmd()
 
 String cap_cmd()
 {
-    String temp = "AT+SETCAP=";
+    String temp = "AT+SETCAP=";                     
 
     // Set Tag capacity
     temp = temp + UWB_TAG_COUNT;

@@ -170,7 +170,7 @@ String sendData(String command, const int timeout, boolean debug)
         SERIAL_LOG.println(response);
     }
 
-    return response;
+    return response;                
 }
 
 String config_cmd()

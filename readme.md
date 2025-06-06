@@ -179,9 +179,9 @@ And use TypeC cable power on MaUWB, the power of ST-Link is not enough.
 
 Like this:
 
-|ST-LINK|3v3|gnd|clk|dio|
+|ST-LINK|3v3|clk|dio|gnd|
 |----|----|----|----|----|
-|UWB_AT|3.3v|gnd|swclk|swdio|
+|UWB_AT|3.3v|swclk|swdio|gnd|
 
 ![](md_pic/u3.jpg)
 

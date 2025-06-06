@@ -21,7 +21,7 @@ Adafruit_SSD1306 display(128, 64, &Wire, -1);
 
 void setup()
 {
-    pinMode(RESET, OUTPUT);
+    pinMode(RESET, OUTPUT);            
     digitalWrite(RESET, HIGH);
 
     Serial.begin(115200);
