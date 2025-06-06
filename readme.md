@@ -198,7 +198,7 @@ Select hex file, click "START" to download.
 
 # STM32 Pin Map
 
-STM32F103RCT6
+STM32F103T8U6
 
 |Index|STM32|PINOUT|Function|
 |----|----|----|----|
